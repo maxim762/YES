@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    background: linear-gradient(-45deg, #ff0066, #6600ff, #00ccff, #00ff88);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0%}
+    50% {background-position: 100%}
+    100% {background-position: 0%}
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 90vw;
+    max-width: 420px;
+}
+
+.cell {
+    aspect-ratio: 1/1;
+    background: rgba(0,0,0,0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: float 3s ease-in-out infinite;
+}
+
+.cell:nth-child(2n){
+    animation-delay: .5s;
+}
+
+.cell:nth-child(3n){
+    animation-delay: 1s;
+}
+
+.cell:hover {
+    transform: scale(1.1);
+}
+
+.cell:active {
+    transform: scale(0.95);
+}
+
+@keyframes float {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}
+
+#fullscreen {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    animation: fade .5s ease;
+}
+
+.box {
+    background: linear-gradient(135deg,#ff00cc,#3333ff);
+    padding: 40px;
+    border-radius: 25px;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    animation: zoom .5s ease, glow 2s infinite alternate;
+    box-shadow: 0 0 40px rgba(255,255,255,0.5);
+}
+
+@keyframes fade {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0.3) rotate(-10deg);
+        opacity:0;
+    }
+    to {
+        transform: scale(1) rotate(0);
+        opacity:1;
+    }
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px #fff;
+    }
+    to {
+        box-shadow: 0 0 50px #ff00ff;
+    }
+}
+
+#fulltext {
+    animation: text 1s ease;
+}
+
+@keyframes text {
+    from {
+        letter-spacing: 20px;
+        opacity:0;
+    }
+    to {
+        letter-spacing: 1px;
+        opacity:1;
+    }
+}
